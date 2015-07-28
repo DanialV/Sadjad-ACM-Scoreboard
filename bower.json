@@ -1,0 +1,21 @@
+{
+  "name": "pc3",
+  "version": "0.0.1",
+  "homepage": "https://github.com/DanialV/PC3",
+  "directory": "public/plugins",
+  "authors": [
+    "Danial Vafadar"
+  ],
+  "description": "Online Judge and is going to replace with pc2",
+  "license": "ISC",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "toastr": "~2.1.1"
+  }
+}
