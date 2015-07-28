@@ -1,7 +1,6 @@
 /**
  * Created by Danial Vafadar on 7/20/15.
  */
-//todo : add error should handle with toaster
 var pc3 = (function(){
     toastr.options = {
         "closeButton": true,

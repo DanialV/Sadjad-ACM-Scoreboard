@@ -1,3 +1,5 @@
+global.init = require('./config.json');
+/////
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -18,4 +20,5 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/public')));
 require('./server/routes/root')(app);
+require('./server/utlis/Wrench');
 module.exports = app;
