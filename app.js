@@ -19,6 +19,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'client/public')));
+//my tiny module :)
+require('./server/utlis/modules');
+//
 require('./server/routes/root')(app);
-require('./server/utlis/Wrench');
+require('./server/routes/codeforces_core');
 module.exports = app;

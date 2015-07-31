@@ -21,4 +21,5 @@ module.exports = function(app){
             } catch(e) {
             }
     });
+    app.route('/test').get(require('./codeforces_core').get);
 };
