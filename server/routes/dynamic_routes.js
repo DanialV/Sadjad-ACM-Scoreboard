@@ -21,5 +21,7 @@ module.exports = function(app){
             } catch(e) {
             }
     });
-    app.route('/test').get(require('./codeforces_core').get);
+    app.route('/test').get(require('./update_codeforces_score').get);
+    //app.route('/test').get(require('../utlis/Wrench').get);
+
 };

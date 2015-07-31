@@ -8,11 +8,13 @@ console.error = function(text){
     console.log("Date : " + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() +
         " " + date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds() + " ----> Error : " + text );
 };
-console.mongo = function(text){
+console.mongo = function(text,error_text){
     var date = new Date();
     var logs = {};
+    console.info(text);
     text = "Date : " + date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() +
-        " " + date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds() + " ----> Error : " + text;
+    " " + date.getHours() + " : " + date.getMinutes() + " : " + date.getSeconds() + " ----> "+(error_text == 0) ?
+    + " " + text : + " : " + text;
     logs.log = text;
     db.logs(logs).save(function(err,doc){
        if(err){

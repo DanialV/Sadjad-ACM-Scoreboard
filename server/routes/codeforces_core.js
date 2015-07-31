@@ -7,21 +7,17 @@ module.exports.get = function(req,res){
     var error = false;
     db.users.find({},{codeforces_username : true , _id : true}).lean().exec(function(err1,users){
         if(err1){
-            console.error(err1);
-            console.mongo(err1);
-            error = true;
+            String.error(err1,res);
         }
         else{
-            //console.log(result.length);
             db.last_id.find({},{last_id : true , _id : false}).lean().exec(function(err2,contest_id){
                 if(err2){
-                    console.error(err2);
-                    console.mongo(err2);
-                    error = true;
+                    String.error(err2,res);
                 }
                 else{
                     var all_data = {};
                     var all_user_result = [];
+                    var ques_info_obj= {};
                     all_data.contest_id = contest_id[0].last_id;
                     Number.async_for(users.length,function(loop) {
                         var i = loop.iteration();
@@ -46,6 +42,7 @@ module.exports.get = function(req,res){
                                                 var each_pro = {};
                                                 ///for every question id index title and woring and time save in array
                                                 each_pro.index = body.result.problems[cntr].index;
+                                                ques_info_obj[body.result.problems[cntr].index] = (ques_info_obj.hasOwnProperty(body.result.problems[cntr].index))?ques_info_obj[body.result.problems[cntr].index]+1 : 1;
                                                 each_pro.title = body.result.problems[cntr].name;
                                                 each_pro.wrongs = contest[cntr].rejectedAttemptCount;
                                                 each_pro.time = contest[cntr].bestSubmissionTimeSeconds;
@@ -62,29 +59,26 @@ module.exports.get = function(req,res){
                                 }
                             }
                             else {
-                                console.mongo("Codeforces Api is Down or We have internet connection problem");
+                                console.mongo("Codeforces Api is Down or We have internet connection problem","Error");
                                 error = true;
                                 loop.break();
                             }
                             loop.next();
                         });
                     },function(){
-                        res.send(all_user_result);
                         all_data.contest_user_info = all_user_result;
+                        all_data.contest_question_info = ques_info_obj;
+                        res.send(all_data);
                         db.codeforces_contests(all_data).save(function(err3,doc){
                             if(err3){
-                                console.error(err3);
-                                console.mongo(err3);
-                                error = true;
+                                String.error(err3,res);
                             }
                         });
-                        console.info("Done");
+                        console.info("Codeforces information gotten form codeforces server successfully");
                         console.mongo("All codeforces api successfully received form the server and stored in mongo");
                     });
                 }
             });
         }
-
     });
-    if(error)res.sendStatus(500);
 };
