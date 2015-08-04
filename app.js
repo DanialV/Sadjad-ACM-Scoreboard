@@ -12,13 +12,13 @@ var app = express();
 app.set('views', path.join(__dirname, 'client/views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// uncomment after placing your favicon.ico in /public
+app.use(favicon(path.join(__dirname, 'client/public/scoreboard', 'favicon.ico')));
 //app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'client/public')));
+app.use(express.static(path.join(__dirname, 'client/public/')));
 //my tiny module :)
 require('./server/utlis/modules');
 //

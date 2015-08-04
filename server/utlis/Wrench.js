@@ -1,23 +1,6 @@
 /**
  * Created by Danial Vafadar on 7/28/15.
  */
-//var db = require("mongo_schemas");
-//todo : the admin route should specify this id
-//var id = {
-//    last_id : 560
-//};
-//db.last_id.remove({},function(err){
-//    if(err)throw err;
-//});
-//var contest_id = db.last_id(id);
-//contest_id.save(function(err,res){
-//    if(err){
-//        throw err;
-//    }
-//    else{
-//        console.log("ok");
-//    }
-//})
 var request = require("request");
 var async = require("async");
 var db = require("mongo_schemas");
@@ -52,7 +35,6 @@ module.exports.get = function(req,res){
             "mobile" : "09372759548",
             "email" : "seriousmvs@gmail.com",
             "codeforces_username" : "seriousX",
-
             "_verify" : true,
             "contests" : 2,
             "questions" : 4,
@@ -69,7 +51,6 @@ module.exports.get = function(req,res){
             "mobile" : "09151031903",
             "email" : "ashkan.mradi@gmail.com",
             "codeforces_username" : "ashkan__",
-
             "_verify" : true,
             "score" : 13.4,
             "meetings" : 2,
@@ -86,7 +67,6 @@ module.exports.get = function(req,res){
             "mobile" : "09351377868",
             "email" : "azimi.hojjat@yahoo.com",
             "codeforces_username" : "hojjat",
-
             "_verify" : true,
             "score" : 13.855,
             "meetings" : 2,
@@ -103,7 +83,6 @@ module.exports.get = function(req,res){
             "mobile" : "09157185173",
             "email" : "lndx.acm@gmail.com",
             "codeforces_username" : "KAKTOOS",
-
             "_verify" : true,
             "score" : 15.185,
             "questions" : 3,
@@ -462,51 +441,39 @@ module.exports.get = function(req,res){
             "__v" : 0
         }
     ];
-
-    //console.error("danial");
-   //db.users.find({},{_id : true , student_number : true}).lean().exec(function(err,doc){
-   //    var cntr = 0;
-   //    user.forEach(function(index){
-   //        if(index.student_number == doc[cntr].student_number){
-   //            var _save = {
-   //                'user_id' : doc._id,
-   //                'meeting_number' : index.meetings,
-   //                'meetings_score' : index.meetings *5
-   //            };
-   //            db.meetings(_save).save(function(err,result){
-   //                if(err){
-   //                    res.status = 500;
-   //                }
-   //            });
-   //        }
-   //        cntr++;
-   //    });
-   // });
-
-
-    function get_info(user , i){
-        if(i == user.length)return res.json(user);
-        console.log(user[i].codeforces_username);
-        request("http://codeforces.com/api/user.info?handles=" + user[i].codeforces_username, function (err, response, body) {
-            if (response && !err && response.statusCode == 200) {
-                body = JSON.parse(body);
-                user[i].rank = (body.result[0].rank) ?  body.result[0].rank : "0";
-                user[i].rating = (body.result[0].rating) ? body.result[0].rating : 0;
-                user[i].maxRank = (body.result[0].maxRank) ? body.result[0].maxRank : "0";
-                user[i].maxRating = (body.result[0].maxRating)?body.result[0].maxRating : 0;
+    var url = "http://codeforces.com/api/user.info?handles=";
+    for(var i = 0; i<user.length ;  i++){
+        url+=user[i].codeforces_username + ";";
+    }
+    request(url, function (err, response, body) {
+        if (response && !err && response.statusCode == 200) {
+            body = JSON.parse(body);
+            Number.async_for(body.result.length,function(loop){
+               var i= loop.iteration();
+                user[i].rank = (body.result[i].rank) ?  body.result[i].rank : "0";
+                user[i].rating = (body.result[i].rating) ? body.result[i].rating : 0;
+                user[i].maxRank = (body.result[i].maxRank) ? body.result[i].maxRank : "0";
+                user[i].maxRating = (body.result[i].maxRating)?body.result[i].maxRating : 0;
                 var temp = new db.users(user[i]);
                 temp.save(function(err,doc){
-                    if(err)throw err;
+                    if(err){
+                        console.error(err);
+                        console.mongo("Error"+err);
+                        res.STATUS_CODES = 500;
+                        res.render('error',{ data : {status_code : '500',status_massage : 'Internal Server error'}});
+                    }
+                    else{
+                        loop.next();
+                    }
                 });
-                get_info(user,i+1);
-            }
-            else {
-                console.log(response.statusCode);
-
-            }
-        });
-    }
-    get_info(user,0);
+            },function(){
+                res.send(user);
+            });
+        }
+        else {
+            console.error(response.statusCode);
+        }
+    });
 };
 
 

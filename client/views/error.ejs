@@ -1,3 +1,22 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<% include header %>
+<body class="body_error">
+    <div id="container" class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="error-template">
+                    <h1>
+                        Oops!</h1>
+                    <h2>
+                        <%-
+                            data.status_code + ' ' + data.status_massage
+                        %>
+                        </h2>
+                    <div class="error-details">
+                        Sorry, an error has occured, <%- data.status_massage %> !
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<% include footer %>

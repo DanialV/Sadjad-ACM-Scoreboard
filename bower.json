@@ -16,6 +16,8 @@
     "tests"
   ],
   "dependencies": {
+    "bootstrap": "*",
+    "jquery": "*",
     "toastr": "~2.1.1"
   }
 }

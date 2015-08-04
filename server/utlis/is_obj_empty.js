@@ -18,4 +18,4 @@ String.isObjEmpty = function(obj) {
     }
 
     return true;
-}
+};

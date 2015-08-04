@@ -20,8 +20,10 @@ module.exports = function(app){
         app.use(function(err, req, res, next) {
             res.status(err.status || 500);
             res.render('error', {
-                message: err.message,
-                error: err
+                data : {
+                    status_code: (err.status || 500),
+                    status_massage: err.message
+                }
             });
         });
     }
