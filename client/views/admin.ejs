@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <ul class="nav nav-tabs">
+            <li role="presentation" class="active"><a id="log" href="#logs" >Server Logs</a></li>
+            <li role="presentation" class="dropdown" >
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Codeforces <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li  role="presentation" ><a id="codeforces_update" href="#codeforces_update">Codeforecs Update</a></li>
+                    <li  role="presentation" ><a id="score_update" href="#score_update">Update Score</a></li>
+                    <li role="presentation"  ><a id="user_update" href="#user_update">User Update</a></li>
+                    <li  role="presentation" ><a id="id_update" href="#id_update">last id Update</a></li>
+                </ul>
+            </li>
+            <li role="presentation"><a id="new_user" href="#new_user">New Users</a></li>
+            <li role="presentation"><a id="logout" href="#logout">Log out</a></li>
+        </ul>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<div class="row" id="second_main">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <br/>
+        <legend style="text-align: center">Server Logs</legend>
+        <% for(var i=0 ; i<data.length ; i++) { %>
+        <div class="well fade-handel">
+            <%- data[i].log%>
+        </div>
+        <%}%>
+    </div>
+    <div class="col-md-1"></div>
+</div>

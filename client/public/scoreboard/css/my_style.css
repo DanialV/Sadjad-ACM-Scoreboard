@@ -1,3 +1,30 @@
+* {
+    margin: 0;
+}
+html, body {
+    padding-top: 20px;
+    height: 100%;
+}
+.errors {
+    color:#a94442;
+    font-size: 90%;
+}
+.page-wrap {
+    min-height: 100%;
+    /* equal to footer height */
+    margin-bottom: -55px;
+}
+.page-wrap:after {
+    content: "";
+    display: block;
+}
+.site-footer, .page-wrap:after {
+    height: 55px;
+}
+.site-footer {
+}
+
+
 
 
 .body_error {
@@ -15,11 +42,10 @@
 footer{
     width:100%;
     height:50px;
-    background-color: #f9f9f9;
-}
-html, body {
-    padding-top: 20px;
-    height: 100%;
+    border: 0;
+    -webkit-box-shadow: 0 2px 10px rgba(0,0,0,.50);
+    -moz-box-shadow: 0 2px 10px rgba(0,0,0,.50);
+    box-shadow: 0 2px 10px rgba(0,0,0,.50);
 }
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 
@@ -155,4 +181,53 @@ table.tableSorter th div.sortArrow div.sortArrowAscending {
 
 table.tableSorter th div.sortArrow div.sortArrowDescending {
     background: url('../img/arrow_desc.png');
+}
+th{
+    text-align:center
+}
+.fade-handel{
+    -webkit-animation: fadein .5s; /* Safari and Chrome */
+    -moz-animation: fadein .5s; /* Firefox */
+    -ms-animation: fadein .5s; /* Internet Explorer */
+    -o-animation: fadein .5s; /* Opera */
+    animation: fadein .5s;
+}
+.list_hidden_fade{
+    -webkit-animation: fadein 1s; /* Safari and Chrome */
+    -moz-animation: fadein 1s; /* Firefox */
+    -ms-animation: fadein 1s; /* Internet Explorer */
+    -o-animation: fadein 1s; /* Opera */
+    animation: fadein 1s;
+}
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Firefox */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+/* Opera */
+@-o-keyframes fadein {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }

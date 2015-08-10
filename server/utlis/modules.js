@@ -6,3 +6,4 @@ require('./Wrench');
 require('./async_loop');
 require('./formula');
 require('./is_obj_empty');
+require('./change_to_lower');

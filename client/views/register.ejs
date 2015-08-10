@@ -1,0 +1,53 @@
+<!--<div class="modal fade" id="register-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">-->
+    <!--<div class="modal-dialog">-->
+        <!--<div class="loginmodal-container">-->
+            <!--<h1>Sign up </h1><br>-->
+            <!--<form id="register_form"  method="post" novalidate>-->
+                <!--<input id="code_username" name="code_username" type="text"  placeholder="Codeforces Username" required>-->
+                <!--<input id="name" name="name" type="text"  placeholder="Name" required>-->
+                <!--<input id="last_name" name="last_name" type="text"  placeholder="Last Name" required>-->
+                <!--<input id="email" name="email" type="text"  placeholder="Email" required>-->
+                <!--<input id="stu_num" name="stu_num" type="text" pattern="^[0-9]+$"   placeholder="Student Number" required>-->
+                <!--<input id="mobile" name="mobile" type="text" pattern="^[0-9]+$"  placeholder="Phone Number" >-->
+                <!--<input id="send_register" type="submit"  class="login loginmodal-submit"   value="Register">-->
+            <!--</form>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div class="row">
+    <div class="col-md-12">
+        <div id="legend">
+            <legend class="">Register</legend>
+        </div>
+        <form role="form" id="register_form"  method="post" novalidate>
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <label class="control-label" for="code_username">Codeforces Username</label>
+                    <input id="code_username" name="code_username" type="text" class="form-control"  placeholder="Codeforces Username" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="name">Name</label>
+                    <input id="name" name="name" class="form-control" type="text"  placeholder="Name" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="last_name">Last Name</label>
+                    <input class="form-control" id="last_name" name="last_name" type="text"  placeholder="Last Name" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="email">Email</label>
+                    <input class="form-control" id="email" name="email" type="email"  placeholder="Email" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="stu_num">Student Number</label>
+                    <input class="form-control" id="stu_num" name="stu_num" type="number" minlength="8" maxlength="8" pattern="^[0-9]+$"   placeholder="Student Number" required>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="mobile">Phone Number</label>
+                    <input class="form-control" id="mobile" name="mobile" type="number" minlength="10" maxlength="10" pattern="^[0-9]+$"  placeholder="Phone Number" >
+                </div>
+                <input id="send_register" type="submit"  class="btn btn-info"   value="Register">
+            </div>
+        </form>
+    </div>
+</div>

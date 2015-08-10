@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a id="log" href="#logs" >Server Logs</a></li>
+            <li role="presentation" class="dropdown active" >
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Codeforces <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li  role="presentation" ><a id="codeforces_update" href="#codeforces_update">Codeforecs Update</a></li>
+                    <li  role="presentation"><a id="score_update" href="#score_update">Update Score</a></li>
+                    <li role="presentation"  ><a id="user_update" href="#user_update">User Update</a></li>
+                    <li  role="presentation" class="active"><a id="id_update" href="#id_update">last id Update</a></li>
+                </ul>
+            </li>
+            <li role="presentation"><a id="new_user" href="#new_user">New Users</a></li>
+            <li role="presentation"><a id="logout" href="#logout">Log out</a></li>
+        </ul>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<br/>
+<div class="row fade-handel" id="second_main">
+    <div class="col-md-3"></div>
+    <div class="col-md-8">
+        <form id="id_form" class="form-inline" action='' method="post" novalidate>
+            <div class="form-group">
+                <label for="exampleInputName2">Last Codeforces Id : </label>
+                <input type="text" class="form-control" id="_last_id" placeholder="Last Id">
+            </div>
+            <button id="id_form_submit" type="submit" class="btn btn-default">Send Id</button>
+        </form>
+    </div>
+    <div class="col-md-1"></div>
+</div>

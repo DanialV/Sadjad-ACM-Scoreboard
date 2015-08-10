@@ -1,7 +1,6 @@
 
 <legend style="text-align: center">Sadjad ACM Scoreboard </legend>
-<div class="table-responsive">
-    <table id="scoreboard" class="table table-bordered tableSorter">
+    <table id="scoreboard" class="table table-bordered tableSorter fade-handel">
         <thead>
         <tr class="info">
             <th>Row</th>
@@ -13,8 +12,39 @@
             <th>Max Ranking</th>
         </tr>
         </thead>
-        <tbody id="tbody">
-
+        <tbody>
+        <% for(var i=0 ; i<data.length ; i++){ %>
+            <% if(i < 3){%>
+                <tr class="success">
+                    <td> <%- (i+1)%> </td>
+                    <td><a href="http://codeforces.com/profile/<%- data[i].codeforces_username%>"><%- data[i].codeforces_username%> </a></td>
+                    <td> <%- data[i].score.toFixed(3)%> </td>
+                    <td> <%- data[i].rating%> </td>
+                    <td> <%- data[i].maxRating%> </td>
+                    <td> <%- data[i].rank%> </td>
+                    <td> <%- data[i].maxRank%> </td>
+                 </tr>
+            <%} else if(i >22){ %>
+                <tr class="danger">
+                    <td> <%- (i+1)%> </td>
+                    <td><a href="http://codeforces.com/profile/<%- data[i].codeforces_username%>"><%- data[i].codeforces_username%> </a></td>
+                    <td> <%- data[i].score.toFixed(3)%> </td>
+                    <td> <%- data[i].rating%> </td>
+                    <td> <%- data[i].maxRating%> </td>
+                    <td> <%- data[i].rank%> </td>
+                    <td> <%- data[i].maxRank%> </td>
+                </tr>
+            <%} else {%>
+                <tr>
+                    <td> <%- (i+1)%> </td>
+                    <td> <a href="http://codeforces.com/profile/<%- data[i].codeforces_username%>"><%- data[i].codeforces_username%> </a> </td>
+                    <td> <%- data[i].score.toFixed(3)%> </td>
+                    <td> <%- data[i].rating%> </td>
+                    <td> <%- data[i].maxRating%> </td>
+                    <td> <%- data[i].rank%> </td>
+                    <td> <%- data[i].maxRank%> </td>
+                </tr>
+            <%}%>
+        <% }%>
         </tbody>
     </table>
-</div>

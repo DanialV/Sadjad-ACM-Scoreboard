@@ -1,0 +1,15 @@
+<div class="col-md-2"></div>
+<div class="col-md-8">
+    <% if(data.type == "Error"){%>
+    <div class="alert alert-danger fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Error!</strong> <%- data.status_code + "   " + data.status_massage%>
+    </div>
+    <% } else {%>
+    <div class="alert alert-success fade in">
+        <a href="#" class="close" data-dismiss="alert">&times;</a>
+        <strong>Success :)</strong> <%- data.message%>
+    </div>
+    <%}%>
+</div>
+<div class="col-md-2"></div>

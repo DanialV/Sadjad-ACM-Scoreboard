@@ -2,12 +2,11 @@
     <div class="modal-dialog">
         <div class="loginmodal-container">
             <h1>Admin</h1><br>
-            <form action="/scoreboard/admin" method="post" novalidate>
-                <input type="text" name="user" placeholder="Username">
-                <input type="password" name="pass" placeholder="Password">
-                <input type="submit" name="login" class="login loginmodal-submit" value="Login">
+            <form id="login_form"  method="post" novalidate>
+                <input id="username" type="text"  placeholder="Username">
+                <input id="password" type="password" placeholder="Password">
+                <input id="send_login" type="submit"  class="login loginmodal-submit"  data-dismiss="modal"  value="Login">
             </form>
-
             <div class="login-help">
                 <a href="#">Register</a> - <a href="#">Forgot Password</a>
             </div>

@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a id="log" href="#logs" >Server Logs</a></li>
+            <li role="presentation" class="dropdown" >
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Codeforces <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li  role="presentation"><a id="codeforces_update" href="#codeforces_update">Codeforecs Update</a></li>
+                    <li  role="presentation" ><a id="score_update" href="#score_update">Update Score</a></li>
+                    <li role="presentation"  ><a id="user_update" href="#user_update">User Update</a></li>
+                    <li  role="presentation" ><a id="id_update" href="#id_update">last id Update</a></li>
+                </ul>
+            </li>
+            <li role="presentation" class="active"><a id="new_user" href="#new_user">New Users</a></li>
+            <li role="presentation"><a id="logout" href="#logout">Log out</a></li>
+        </ul>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table id="user_verify" class="table table-bordered tableSorter fade-handel">
+            <thead>
+            <tr class="info">
+                <th>Row</th>
+                <th></span>Codeforces Username</th>
+                <th>Accept</th>
+                <th>Reject</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for(var i=0 ; i<data.length ; i++){ %>
+            <tr>
+                <td> <%- (i+1)%> </td>
+                <td><a href="http://codeforces.com/profile/<%- data[i].codeforces_username%>"><%- data[i].codeforces_username%> </a></td>
+                <td><button id="accept_<%-data[i].codeforces_username%>" type="button" class="btn btn-success">Accept</button></td>
+                <td><button id="reject_<%-data[i].codeforces_username%>" type="button" class="btn btn-danger">Reject</button></td>
+            </tr>
+            <% }%>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-2"></div>
+</div>

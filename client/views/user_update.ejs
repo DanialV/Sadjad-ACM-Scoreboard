@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a id="log" href="#logs" >Server Logs</a></li>
+            <li role="presentation" class="dropdown active" >
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Codeforces <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li  role="presentation" ><a id="codeforces_update" href="#codeforces_update">Codeforecs Update</a></li>
+                    <li  role="presentation"><a id="score_update" href="#score_update">Update Score</a></li>
+                    <li role="presentation"  class="active"><a id="user_update" href="#user_update">User Update</a></li>
+                    <li  role="presentation" ><a id="id_update" href="#id_update">last id Update</a></li>
+                </ul>
+            </li>
+            <li role="presentation"><a id="new_user" href="#new_user">New Users</a></li>
+            <li role="presentation"><a id="logout" href="#logout">Log out</a></li>
+        </ul>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<br/>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <% if(data.type == "Error"){%>
+        <div class="alert alert-danger fade in">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Error!</strong> <%- data.status_code + "   " + data.status_massage%>
+        </div>
+        <% } else {%>
+        <div class="alert alert-success fade in">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>Success :)</strong> <%- data.message%>
+        </div>
+        <%}%>
+    </div>
+    <div class="col-md-2"></div>
+</div>
