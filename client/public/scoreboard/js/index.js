@@ -20,6 +20,7 @@ var pc3 = (function(){
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     };
+
     $.fn.serializeObject = function() {
         var o = {};
         var a = this.serializeArray();
@@ -44,6 +45,7 @@ var pc3 = (function(){
             var _data = {};
             _data.username = $("#username").val();
             _data.password = $("#password").val();
+            _data._csrf = $('[name = "_csrf"]').val();
             $.ajax({
                 url : '/' + route_postfix +'login',
                 type : 'POST',
@@ -97,6 +99,9 @@ var pc3 = (function(){
                         }
                         else if(ok == "duplicate") {
                             toastr.error("Your have already registered if your username is not on scoreboard table waite for admin approval ","Oops!");
+                        }
+                        else if(ok == "recaptcha"){
+                            toastr.error("Please verify that you are not a robot.","Sorry!");
                         }
                         else{
                             toastr.error("Your Codeforces Username is invalid","Oops!");
@@ -174,6 +179,7 @@ var pc3 = (function(){
                 url : '/' + route_postfix +'register',
                 type : 'GET',
                 success : function(html){
+                    $("#main").addClass("fade-handel");
                     $("#main").html(html);
                     post_register();
                 },
@@ -357,7 +363,8 @@ var pc3 = (function(){
                             type : 'Post',
                             data : {
                                 result : "ok",
-                                codeforces_username : username[1]
+                                codeforces_username : username[1],
+                                _csrf : $('[name = "_csrf"]').val()
                             },
                             success : function(_res){
                                 if(_res){
@@ -383,7 +390,8 @@ var pc3 = (function(){
                             type : 'Post',
                             data : {
                                 result : "delete",
-                                codeforces_username : username[1]
+                                codeforces_username : username[1],
+                                _csrf : $('[name = "_csrf"]').val()
                             },
                             success : function(_res){
                                 if(_res){

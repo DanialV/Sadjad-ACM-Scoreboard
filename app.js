@@ -8,6 +8,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('cookie-session');
 var bodyParser = require('body-parser');
+var csrf = require('csurf');
 var app = express();
 
 // view engine setup
@@ -22,12 +23,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('dfinsfnstcoytounrgw'));
 app.use(express.static(path.join(__dirname, 'client/public/')));
 app.use(session({
-    name: 'shroom',
+    name: 'scoreboard_session',
     secret: 'kytddkhovoqyfjgfhch'
+}));
+app.use(csrf({
+    cookie: true,
+    key : '_CSURF_TOKEN'
 }));
 //my tiny module :)
 require('./server/utlis/modules');
-//String.change_to_lower();
 //
 require('./server/routes/root')(app);
 

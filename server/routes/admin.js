@@ -7,7 +7,7 @@ module.exports.get =function(req,res){
         res.redirect(301, '/scoreboard');
     }
     else{
-        db.logs.find({},{_id : false , __v : false} ).lean().exec(function(err,doc){
+        db.logs.find({},{_id : false , __v : false} ).sort({date: -1}).lean().exec(function(err,doc){
             if(err){
                 console.error(err);
                 console.mongo("Error "+err);

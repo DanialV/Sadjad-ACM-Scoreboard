@@ -16,8 +16,7 @@ module.exports.get = function(req,res){
                     res.sendStatus(500);
                 }
                 else{
-                    console.log(user);
-                    res.render('new_user',{data : user});
+                    res.render('new_user',{data : user , csrfToken : req.csrfToken()});
                 }
             });
         }
@@ -50,16 +49,26 @@ module.exports.post = function(req,res){
                 res.sendStatus(500);
             }
             else {
-                user._verify = true;
-                db.users(user).save(function (err2) {
-                    if (err2) {
-                        console.error(err2);
-                        console.mongo("Error " + err2);
+                db.users.remove({codeforces_lower : data.codeforces_username.toLowerCase()},function(err){
+                    if(err){
+                        console.error(err);
+                        console.mongo("Error "+err);
                         res.STATUS_CODES = 500;
                         res.sendStatus(500);
                     }
-                    else {
-                        res.send(true);
+                    else{
+                        user[0]._verify = true;
+                        db.users(user[0]).save(function (err2) {
+                            if (err2) {
+                                console.error(err2);
+                                console.mongo("Error " + err2);
+                                res.STATUS_CODES = 500;
+                                res.sendStatus(500);
+                            }
+                            else {
+                                res.send(true);
+                            }
+                        });
                     }
                 });
             }

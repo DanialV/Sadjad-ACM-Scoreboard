@@ -42,8 +42,9 @@ module.exports = function(app){
         try {
             app.route('/' + route_postfix +  index)
                 .get(function(req,res){
-                    if(req.xhr)
-                        res.render(index);
+                    if(req.xhr) {
+                        res.render(index , {csrfToken : req.csrfToken()});
+                    }
                     else res.render('error',{data : {status_code : '550',status_massage : 'Permission denied'}});
                 }).post(require('./' + index).post);
         } catch(e) {

@@ -14,12 +14,14 @@
         <!--</div>-->
     <!--</div>-->
 <!--</div>-->
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <div class="row">
     <div class="col-md-12">
         <div id="legend">
-            <legend class="">Register</legend>
+            <legend>Register</legend>
         </div>
         <form role="form" id="register_form"  method="post" novalidate>
+            <input type="hidden" name="_csrf" value="<%- csrfToken%>">
             <div class="col-md-2"></div>
             <div class="col-md-8">
                 <div class="form-group">
@@ -44,7 +46,10 @@
                 </div>
                 <div class="form-group">
                     <label class="control-label" for="mobile">Phone Number</label>
-                    <input class="form-control" id="mobile" name="mobile" type="number" minlength="10" maxlength="10" pattern="^[0-9]+$"  placeholder="Phone Number" >
+                    <input class="form-control" id="mobile" name="mobile" type="number" minlength="11" maxlength="11" pattern="^[0-9]+$"  placeholder="Phone Number" >
+                </div>
+                <div class="form-group">
+                    <div class="g-recaptcha" data-sitekey="6LcPIQsTAAAAAJgTWB6YG7gfbPVQUOjgZQVYsKAH"></div>
                 </div>
                 <input id="send_register" type="submit"  class="btn btn-info"   value="Register">
             </div>

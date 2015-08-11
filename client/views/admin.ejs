@@ -25,11 +25,38 @@
     <div class="col-md-10">
         <br/>
         <legend style="text-align: center">Server Logs</legend>
-        <% for(var i=0 ; i<data.length ; i++) { %>
-        <div class="well fade-handel">
-            <%- data[i].log%>
+        <div id="content">
+            <%  for(var i=(data.length) - 1; i>=(data.length) - 4 ; i--) { %>
+            <div class="well fade-handel">
+                <%- data[i].log%>
+            </div>
+            <%}%>
         </div>
-        <%}%>
+        <div id="page-selection" style="text-align: center"></div>
+        <script>
+            var reminder;
+            var _data = <%-  JSON.stringify(data) %>
+            reminder = (_data.length%4)?1:0;
+            $('#page-selection').bootpag({
+                total:  parseInt(_data.length/4) +reminder,
+                maxVisible: 5,
+                leaps: true,
+                firstLastUse: true,
+                first: '←',
+                last: '→',
+                wrapClass: 'pagination',
+                activeClass: 'active',
+                disabledClass: 'disabled',
+                nextClass: 'next',
+                prevClass: 'prev',
+                lastClass: 'last',
+                firstClass: 'first'
+            }).on("page", function(event, num){
+                $("#content").html("");
+                for(var i=(_data.length) - (num*4-4) - 1; i>=(_data.length) - (num*4) ; i--)
+                    $("#content").append('<div class="well fade-handel">'+_data[i].log + '</div>');
+            });
+        </script>
     </div>
     <div class="col-md-1"></div>
 </div>

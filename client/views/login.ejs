@@ -3,6 +3,7 @@
         <div class="loginmodal-container">
             <h1>Admin</h1><br>
             <form id="login_form"  method="post" novalidate>
+                <input type="hidden" name="_csrf" value="<%- csrfToken %>">
                 <input id="username" type="text"  placeholder="Username">
                 <input id="password" type="password" placeholder="Password">
                 <input id="send_login" type="submit"  class="login loginmodal-submit"  data-dismiss="modal"  value="Login">
