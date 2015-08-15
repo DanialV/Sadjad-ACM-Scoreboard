@@ -22,7 +22,8 @@ module.exports = function(app){
             res.render('error', {
                 data : {
                     status_code: (err.status || 500),
-                    status_massage: err.message
+                    status_massage: err.message,
+                    'version' : global.init.version
                 }
             });
         });
@@ -34,7 +35,9 @@ module.exports = function(app){
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
-            error: {}
+            error: {},
+            'version' : global.init.version
+
         });
     });
 };

@@ -68,6 +68,9 @@ module.exports.get = function(req,res){
                                                 }
                                             }
                                             if(!flag){
+                                                for(var i=0 ; i<body.result.problems.length ; i++){
+                                                    ques_info_obj[body.result.problems[i].index] = 0;
+                                                }
                                                 //user not found so it doesn't participate in this contest
                                                 all_user_result.push(each_contest_res);
                                             }
@@ -77,6 +80,7 @@ module.exports.get = function(req,res){
                                             }
                                         }
                                         all_data.contest_user_info = all_user_result;
+
                                         all_data.contest_question_info = ques_info_obj;
                                         //todo : this should change is admin page
                                         db.codeforces_contests(all_data).save(function(err3,doc){

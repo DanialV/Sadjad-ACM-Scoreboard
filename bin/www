@@ -5,7 +5,7 @@
  */
 var mongoose = require("mongoose");
 var app = require('../app');
-var debug = require('debug')('pc3:server');
+var debug = require('debug')('scoreboard:server');
 var http = require('http');
 
 /**

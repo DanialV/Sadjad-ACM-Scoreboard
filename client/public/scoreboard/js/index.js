@@ -99,12 +99,15 @@ var pc3 = (function(){
                         }
                         else if(ok == "duplicate") {
                             toastr.error("Your have already registered if your username is not on scoreboard table waite for admin approval ","Oops!");
+                            grecaptcha.reset();
                         }
                         else if(ok == "recaptcha"){
                             toastr.error("Please verify that you are not a robot.","Sorry!");
+                            grecaptcha.reset();
                         }
                         else{
                             toastr.error("Your Codeforces Username is invalid","Oops!");
+                            grecaptcha.reset();
                         }
                     },
                     error : function(err){

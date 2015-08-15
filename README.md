@@ -1,14 +1,14 @@
-## simple_scoreboard
-a simple scoreboard for acm members (nodejs)
+## Sadjad ACM  Scoreboard
+a Sadjad university scoreboard for acm members (nodejs)
 ### How to run :
 install nodejs and mongodb
 
 clone this repo with this command :
 ```sh
-git clone https://github.com/elyas74/simple_scoreboard
+git clone https://github.com/danialv/simple_scoreboard
 ```
 
-change your terminal directory to simple_scoreborad folder
+change your terminal directory to sadjad_scoreboard folder
 
 #### run this commands :
 ```sh
