@@ -69,7 +69,7 @@ module.exports.get = function(req,res){
                                             }
                                             if(!flag){
                                                 for(var i=0 ; i<body.result.problems.length ; i++){
-                                                    ques_info_obj[body.result.problems[i].index] = 0;
+                                                    ques_info_obj[body.result.problems[i].index] = (ques_info_obj.hasOwnProperty(body.result.problems[i].index)) ? ques_info_obj[body.result.problems[i].index] : 0;
                                                 }
                                                 //user not found so it doesn't participate in this contest
                                                 all_user_result.push(each_contest_res);
@@ -108,7 +108,7 @@ module.exports.get = function(req,res){
             });
         }
         else{
-            res.render('error',{ data : {status_code : '550',status_massage : 'Permission denied'}});
+            res.render('error',{ data : {status_code : '550',status_massage : 'Permission denied' , version : global.init.version}});
         }
     }
 };

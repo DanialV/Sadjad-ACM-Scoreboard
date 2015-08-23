@@ -1,6 +1,6 @@
 {
-  "name": "pc3",
-  "version": "0.0.5",
+  "name": "Sadjad_ACM_Scoreboard",
+  "version": "0.0.6",
   "main": "app.js",
   "description": "Online Judge and it's going to replace with pc2",
   "private": true,

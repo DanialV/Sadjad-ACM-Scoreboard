@@ -22,15 +22,18 @@ module.exports.post = function(req,res){
                     if(info[0].username == data.username){
                         bcrypt.compare_(data.password,info[0].password,function(com){
                             if(com){
+                                console.mongo("Successfully to login : "  + "Username : " + data.username + " Password : " + data.password);
                                 req.session.username = info[0].username;
                                 res.send(true);
                             }
                             else{
+                                console.mongo("Failed to login : " + "Username : " +data.username + "  Password : " + data.password);
                                 res.send(false);
                             }
                         });
                     }
                     else{
+                        console.mongo("Failed to login : " + "Username : " + data.username + "  Password : " + data.password);
                         res.send(false);
                     }
                 }

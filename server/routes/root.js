@@ -34,8 +34,8 @@ module.exports = function(app){
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
         res.render('error', {
-            message: err.message,
-            error: {},
+            status_code: (err.status || 500),
+            status_massage: "Internal Server Error",
             'version' : global.init.version
 
         });

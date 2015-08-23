@@ -3,10 +3,10 @@
  */
 var request = require("request");
 var async = require("async");
+var bcrypt = require("encrypt");
 var db = require("mongo_schemas");
-require('console');
-function ObjectId(a){
-        return a;
+function ObjectId(s){
+    return s;
 }
 module.exports.get = function(req,res){
     if(typeof req.session.username == 'undefined'){
@@ -37,7 +37,6 @@ module.exports.get = function(req,res){
 
                     /* 1 */
                     {
-                        "_id": ObjectId("5548fd55017990a02e380e5e"),
                         "first_name": "حسین",
                         "last_name": "جدی",
                         "student_number": 93412147,
@@ -53,7 +52,6 @@ module.exports.get = function(req,res){
 
                     /* 2 */
                     {
-                        "_id": ObjectId("554901c5017990a02e380e60"),
                         "first_name": "Ashkan",
                         "last_name": "Moradi",
                         "student_number": 92412196,
@@ -69,7 +67,6 @@ module.exports.get = function(req,res){
 
                     /* 3 */
                     {
-                        "_id": ObjectId("55496313017990a02e380e66"),
                         "first_name": "حجت",
                         "last_name": "عظیمی اسراری",
                         "student_number": 923577920,
@@ -85,7 +82,6 @@ module.exports.get = function(req,res){
 
                     /* 4 */
                     {
-                        "_id": ObjectId("55498571017990a02e380e6c"),
                         "first_name": "Seyyed Mohammad",
                         "last_name": "Moosavi",
                         "student_number": 92422210,
@@ -101,7 +97,6 @@ module.exports.get = function(req,res){
 
                     /* 5 */
                     {
-                        "_id": ObjectId("554a848303b87aa21e22f592"),
                         "first_name": "مطهره",
                         "last_name": "شریعتمداری",
                         "student_number": 92412177,
@@ -118,7 +113,6 @@ module.exports.get = function(req,res){
 
                     /* 6 */
                     {
-                        "_id": ObjectId("554aab2c03b87aa21e22f5a5"),
                         "first_name": "سید معین الدین",
                         "last_name": "سعادتی",
                         "student_number": 93412119,
@@ -135,7 +129,6 @@ module.exports.get = function(req,res){
 
                     /* 7 */
                     {
-                        "_id": ObjectId("554ab7ce03b87aa21e22f5b8"),
                         "first_name": "ali",
                         "last_name": "gandomi",
                         "student_number": 92412113,
@@ -152,7 +145,6 @@ module.exports.get = function(req,res){
 
                     /* 8 */
                     {
-                        "_id": ObjectId("554be18f03b87aa21e22f5fb"),
                         "first_name": "s",
                         "last_name": "Gha",
                         "student_number": 92412163,
@@ -169,7 +161,6 @@ module.exports.get = function(req,res){
 
                     /* 9 */
                     {
-                        "_id": ObjectId("554bfafb359ec5fc233d0157"),
                         "first_name": "maryam",
                         "last_name": "nazari",
                         "student_number": 93412120,
@@ -186,7 +177,6 @@ module.exports.get = function(req,res){
 
                     /* 10 */
                     {
-                        "_id": ObjectId("554c00d0359ec5fc233d016d"),
                         "first_name": "دانیال",
                         "last_name": "وفادار",
                         "student_number": 92412147,
@@ -203,7 +193,6 @@ module.exports.get = function(req,res){
 
                     /* 11 */
                     {
-                        "_id": ObjectId("554c06c4359ec5fc233d017e"),
                         "first_name": "taravat",
                         "last_name": "anvari",
                         "student_number": 93422149,
@@ -220,7 +209,6 @@ module.exports.get = function(req,res){
 
                     /* 12 */
                     {
-                        "_id": ObjectId("554c089c359ec5fc233d0185"),
                         "first_name": "narges",
                         "last_name": "aghighi",
                         "student_number": 93415113,
@@ -237,7 +225,6 @@ module.exports.get = function(req,res){
 
                     /* 13 */
                     {
-                        "_id": ObjectId("554c12b7359ec5fc233d0196"),
                         "first_name": "سمانه",
                         "last_name": "خسروی",
                         "student_number": 93422146,
@@ -254,7 +241,6 @@ module.exports.get = function(req,res){
 
                     /* 14 */
                     {
-                        "_id": ObjectId("554d030c359ec5fc233d020a"),
                         "first_name": "amir",
                         "last_name": "gohari",
                         "student_number": 92422123,
@@ -271,7 +257,6 @@ module.exports.get = function(req,res){
 
                     /* 15 */
                     {
-                        "_id": ObjectId("555b4758359ec5fc233d0304"),
                         "first_name": "ali",
                         "last_name": "forghani",
                         "student_number": 93412130,
@@ -288,7 +273,6 @@ module.exports.get = function(req,res){
 
                     /* 16 */
                     {
-                        "_id": ObjectId("555ce9f0359ec5fc233d035a"),
                         "first_name": "نیلوفر",
                         "last_name": "طبائی",
                         "student_number": 93415111,
@@ -305,7 +289,6 @@ module.exports.get = function(req,res){
 
                     /* 17 */
                     {
-                        "_id": ObjectId("5548edef017990a02e380e58"),
                         "first_name": "سپهر",
                         "last_name": "محقق",
                         "student_number": 92412147,
@@ -321,7 +304,6 @@ module.exports.get = function(req,res){
 
                     /* 18 */
                     {
-                        "_id": ObjectId("55490f00017990a02e380e63"),
                         "first_name": "ali",
                         "last_name": "yazdi",
                         "student_number": 92412120,
@@ -337,7 +319,6 @@ module.exports.get = function(req,res){
 
                     /* 19 */
                     {
-                        "_id": ObjectId("554984e1017990a02e380e69"),
                         "first_name": "الناز",
                         "last_name": "صباغ زاده",
                         "student_number": 92412119,
@@ -353,7 +334,6 @@ module.exports.get = function(req,res){
 
                     /* 20 */
                     {
-                        "_id": ObjectId("5549e04b017990a02e380e6e"),
                         "first_name": "zahra",
                         "last_name": "mirzaei",
                         "student_number": 93412150,
@@ -369,7 +349,6 @@ module.exports.get = function(req,res){
 
                     /* 21 */
                     {
-                        "_id": ObjectId("554a2d17017990a02e380e70"),
                         "first_name": "mahsa",
                         "last_name": "shah mohammad zade",
                         "student_number": 92412123,
@@ -385,7 +364,6 @@ module.exports.get = function(req,res){
 
                     /* 22 */
                     {
-                        "_id": ObjectId("55510e60359ec5fc233d025c"),
                         "first_name": "سجاد",
                         "last_name": "عبدی ده سرخ",
                         "student_number": 92412150,
@@ -402,7 +380,6 @@ module.exports.get = function(req,res){
 
                     /* 23 */
                     {
-                        "_id": ObjectId("5553ac48359ec5fc233d0287"),
                         "first_name": "علی",
                         "last_name": "تیموری",
                         "student_number": 93614155,
@@ -419,7 +396,6 @@ module.exports.get = function(req,res){
 
                     /* 24 */
                     {
-                        "_id": ObjectId("55579d26359ec5fc233d02c7"),
                         "first_name": "فاطمه",
                         "last_name": "مهاجر",
                         "student_number": 93415127,
@@ -436,7 +412,6 @@ module.exports.get = function(req,res){
 
                     /* 25 */
                     {
-                        "_id": ObjectId("55b05a96b5725c6e22cb512c"),
                         "first_name": "محمد جواد",
                         "last_name": "اشرافی بجستانی",
                         "student_number": 93412162,
@@ -485,23 +460,6 @@ module.exports.get = function(req,res){
                         console.error(response.statusCode);
                     }
                 });
-                //bcrypt.hash_("ADMIN_PASSWORD", function (hash) {
-                //    var add_admin = {
-                //        username: "danialv",
-                //        password: hash
-                //    };
-                //    db.admin(add_admin).save(function (err) {
-                //        if (err) {
-                //            console.error(err);
-                //            console.mongo("Error" + err);
-                //            res.STATUS_CODES = 500;
-                //            res.render('error', {data: {status_code: '500', status_massage: 'Internal Server error'}});
-                //        }
-                //        else {
-                //            console.mongo("Admin user successfully added");
-                //        }
-                //    });
-                //});
             }
         });
     }

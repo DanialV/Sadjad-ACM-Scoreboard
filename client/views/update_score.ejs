@@ -29,12 +29,37 @@
             <a href="#" class="close" data-dismiss="alert">&times;</a>
             <strong>Error!</strong> <%- data.status_code + "   " + data.status_massage%>
         </div>
-        <% } else {%>
-        <div class="alert alert-success fade in">
-            <a href="#" class="close" data-dismiss="alert">&times;</a>
-            <strong>Success :)</strong> <%- data.message%>
-        </div>
-        <%}%>
+        <% } else {
+            if(typeof data.contests != 'undefined'){
+                var i = 0;
+        %>
+                    <table id="update_score" class="table table-bordered tableSorter fade-handel">
+                        <input type="hidden" name="_csrf" value="<%- data.csrfToken%>">
+                        <thead>
+                        <tr class="info">
+                            <th>Update</th>
+                            <th>Contest Id</th>
+                            <th>Row</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% data.contests.forEach(function(index){%>
+                        <tr>
+                            <td><button id="<%-index.contest_id%>" type="button" class="btn btn-success">Update</button></td>
+                            <td><%- index.contest_id %></td>
+                            <td> <%- (++i) %> </td>
+                        </tr>
+                        <% });%>
+                        </tbody>
+                    </table>
+            <%}
+            else{%>
+                <div class="alert alert-success fade in">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Success :)</strong> <%- data.message%>
+                </div>
+            <%}
+        }%>
     </div>
     <div class="col-md-2"></div>
 </div>

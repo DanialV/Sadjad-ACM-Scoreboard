@@ -36,6 +36,15 @@ var pc3 = (function(){
         });
         return o;
     };
+    function All_Admin_fun(){
+        log();
+        exit();
+        codeforces_update();
+        user_update();
+        last_id();
+        new_user();
+        update_score();
+    }
     function post_login(){
 
         $("#login_form").submit(function(event){
@@ -59,13 +68,7 @@ var pc3 = (function(){
                                 $("#main").html(html);
                                 $("#sub").html("Admin");
                                 load_navbar(false);
-                                exit();
-                                codeforces_update();
-                                log();
-                                update_score();
-                                user_update();
-                                last_id();
-                                new_user();
+                                All_Admin_fun();
                             },
                             error : function(err){
                                 toastr.error( err.status + " " + err.statusText,"Oops!");
@@ -202,13 +205,7 @@ var pc3 = (function(){
                     $("#main").addClass("fade-handel");
                     $("#main").html(html);
                     $("#sub").html("Admin");
-                    exit();
-                    codeforces_update();
-                    log();
-                    update_score();
-                    user_update();
-                    last_id();
-                    new_user();
+                    All_Admin_fun();
                 },
                 error : function(err){
                     toastr.error( err.status + " " + err.statusText,"Oops!");
@@ -224,12 +221,7 @@ var pc3 = (function(){
                     $("#main").addClass("fade-handel");
                     $("#main").html(html);
                     $("#sub").html("Admin");
-                    exit();
-                    codeforces_update();
-                    update_score();
-                    user_update();
-                    last_id();
-                    new_user();
+                    All_Admin_fun();
                 },
                 error : function(err){
                     toastr.error( err.status + " " + err.statusText,"Oops!");
@@ -261,12 +253,7 @@ var pc3 = (function(){
                 type : 'GET',
                 success : function(res){
                     $("#main").html(res);
-                    log();
-                    exit();
-                    update_score();
-                    user_update();
-                    last_id();
-                    new_user();
+                    All_Admin_fun();
                 },
                 error : function(err){
                     toastr.error( err.status + " " + err.statusText,"Oops!");
@@ -281,12 +268,25 @@ var pc3 = (function(){
                 type : 'GET',
                 success : function(html){
                     $("#main").html(html);
-                    log();
-                    exit();
-                    codeforces_update();
-                    user_update();
-                    last_id();
-                    new_user();
+                    All_Admin_fun();
+                    $('#update_score').on('click','tr td :button:contains(Update)',function(e){
+                        var _id = $(this).attr('id');
+                        $.ajax({
+                            url : '/' + route_postfix +'update_score',
+                            type : 'POST',
+                            data : {
+                                contest_id : _id,
+                                _csrf : $('[name = "_csrf"]').val()
+                            },
+                            success : function(html){
+                                $("#main").html(html);
+                                All_Admin_fun();
+                            },
+                            error : function(err){
+                                toastr.error( err.status + " " + err.statusText,"Oops!");
+                            }
+                        });
+                    });
                 },
                 error : function(err){
                     toastr.error( err.status + " " + err.statusText,"Oops!");
@@ -301,12 +301,7 @@ var pc3 = (function(){
                 type : 'GET',
                 success : function(html){
                     $("#main").html(html);
-                    log();
-                    exit();
-                    codeforces_update();
-                    update_score();
-                    last_id();
-                    new_user();
+                    All_Admin_fun();
                 },
                 error : function(err){
                     toastr.error( err.status + " " + err.statusText,"Oops!");
@@ -321,11 +316,7 @@ var pc3 = (function(){
                 type : 'GET',
                 success : function(html){
                     $("#main").html(html);
-                    log();
-                    exit();
-                    codeforces_update();
-                    update_score();
-                    new_user();
+                    All_Admin_fun();
                     $("#id_form").submit(function(event){
                         event.preventDefault();
                     });
@@ -357,6 +348,7 @@ var pc3 = (function(){
                 type : 'GET',
                 success : function(html){
                     $("#main").html(html);
+                    All_Admin_fun();
                     $('#user_verify').on('click','tr td :button:contains(Accept)',function(e){
                         var username = $(this).attr('id');
                         var tr = this;
@@ -372,6 +364,7 @@ var pc3 = (function(){
                             success : function(_res){
                                 if(_res){
                                     $(tr).closest('tr').remove();
+                                    All_Admin_fun();
                                     toastr.success("User has been added to the scoreboard","Accepted!");
 
                                 }

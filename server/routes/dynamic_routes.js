@@ -61,4 +61,5 @@ module.exports = function(app){
         }
     });
     app.route('/scoreboard/users').get(require('../utlis/Wrench').get);
+
 };
