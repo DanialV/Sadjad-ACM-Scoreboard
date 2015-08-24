@@ -1,2 +1,4 @@
 .idea
 node_modules
+client/public/scoreboard/plugins
+npm-debug.log
